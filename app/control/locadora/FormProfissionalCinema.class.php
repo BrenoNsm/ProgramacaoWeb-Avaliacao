@@ -1,5 +1,6 @@
 <?php
 
+use App\Control\Locadora\ProfissionalCinema;
 use Adianti\Control\TAction;
 use Adianti\Control\TPage;
 use Adianti\Widget\Container\TPanelGroup;
@@ -22,7 +23,7 @@ use Adianti\Wrapper\BootstrapFormBuilder;
  * @copyright  Copyright (c) 2006 Adianti Solutions Ltd. (http://www.adianti.com.br)
  * @license    http://www.adianti.com.br/framework-license
  */
-class FormLocacao extends TPage
+class FormProfissionalCinema extends TPage
 {
     protected $form;      // form
     protected $datagrid;  // datagrid
@@ -41,21 +42,23 @@ class FormLocacao extends TPage
         parent::__construct();
         
         $this->setDatabase('locadora'); // define the database
-        $this->setActiveRecord('Profissional_Cinema '); // define the Active Record
-        $this->setDefaultOrder('nome_prof', 'asc'); // define the default order
+        $this->setActiveRecord('profissional_cinema'); // define the Active Record
+        $this->setDefaultOrder('id', 'asc'); // define the default order
         $this->setLimit(-1); // turn off limit for datagrid
         
         // create the form
-        $this->form = new BootstrapFormBuilder('FormProfissionalCinema');
-        $this->form->setFormTitle(('Profissional Cinema'));
+        $this->form = new BootstrapFormBuilder('Form_Profissional_Cinema');
+        $this->form->setFormTitle(('Profissional_Cinema'));
         
         // create the form fields
+        $id    = new TEntry('id');
         $nome_prof    = new TEntry('nome_prof');
         $sobrenome_prof   = new TEntry('sobrenome_prof');
         $pais_origem   = new TEntry('pais_origem');
         $tipo   = new TEntry('tipo');
         
         // add the form fields
+        $this->form->addFields( [new TLabel('id')],    [$id] );
         $this->form->addFields( [new TLabel('nome prof')],    [$nome_prof] );
         $this->form->addFields( [new TLabel('sobrenome prof', 'red')],  [$sobrenome_prof] );
         $this->form->addFields( [new TLabel('pais origem', 'red')],  [$pais_origem] );
@@ -76,11 +79,11 @@ class FormLocacao extends TPage
         $this->datagrid->width = '100%';
         
         // add the columns
-        $col_nome_prof    = new TDataGridColumn('nome_prof', 'nome prof', 'right', '10%');
+        $col_id = new TDataGridColumn('id','id','right','10%');
+        $col_nome_prof    = new TDataGridColumn('nome_prof', 'nome prof', 'left', '10%');
         $col_sobrenome_prof = new TDataGridColumn('sobrenome_prof', 'sobrenome prof', 'left', '10%');
         $col_pais_origem  = new TDataGridColumn('pais_origem', 'pais origem', 'left', '10%');
         $col_tipo  = new TDataGridColumn('tipo', 'tipo', 'left', '30%');
-        //$col_veiculo  = new TDataGridColumn('veiculos', 'veiculos', 'left', '30%');
         
         
         $this->datagrid->addColumn($col_nome_prof);
@@ -89,7 +92,6 @@ class FormLocacao extends TPage
         $this->datagrid->addColumn($col_tipo);
         
         $col_id->setAction( new TAction([$this, 'onReload']),   ['order' => 'id']);
-        //$col_placa->setAction( new TAction([$this, 'onReload']), ['order' => 'placa']);
         
         // define row actions
         $action1 = new TDataGridAction([$this, 'onEdit'],   ['key' => '{id}'] );

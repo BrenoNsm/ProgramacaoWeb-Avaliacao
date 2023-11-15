@@ -2,8 +2,8 @@
 
 use Adianti\Database\TRecord;
 
-class ProfissionalCinema_class extends TRecord{
-    const TABLENAME = 'Profissional_Cinema';
+class profissional_cinema extends TRecord{
+    const TABLENAME = 'profissional_cinema';
     const PRIMARYKEY= 'id';
     const IDPOLICY =  'max'; // {max, serial}
     
