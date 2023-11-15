@@ -41,7 +41,7 @@ class FormLocacao extends TPage
         parent::__construct();
         
         $this->setDatabase('locadora'); // define the database
-        $this->setActiveRecord('locacoes'); // define the Active Record
+        $this->setActiveRecord('Profissional_Cinema '); // define the Active Record
         $this->setDefaultOrder('nome_prof', 'asc'); // define the default order
         $this->setLimit(-1); // turn off limit for datagrid
         
