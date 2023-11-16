@@ -54,7 +54,7 @@ class FormGenero extends TPage
         $denominacao    = new TEntry('denominacao');
         
         // add the form fields
-        $this->form->addFields([new TLabel('ID')], [$cod_gen]);
+        $this->form->addFields([new TLabel('Cod Gen')], [$cod_gen]);
         $this->form->addFields([new TLabel('denominacao')], [$denominacao]);
         
         // define the form actions
@@ -69,17 +69,17 @@ class FormGenero extends TPage
         $this->datagrid->width = '100%';
         
         // add the columns
-        $col_cod_gen           = new TDataGridColumn('cod_gen', 'ID', 'right', '10%');
+        $col_cod_gen           = new TDataGridColumn('cod_gen', 'Cod Gen', 'right', '10%');
         $col_denominacao    = new TDataGridColumn('denominacao', 'Denominacao', 'right', '10%');
         
         $this->datagrid->addColumn($col_cod_gen);
         $this->datagrid->addColumn($col_denominacao);
         
-        $col_cod_gen->setAction(new TDataGridAction([$this, 'onReload']), ['order' => 'id']);
+        $col_cod_gen->setAction(new TDataGridAction([$this, 'onReload']), ['order' => 'cod_gen']);
         
         // define row actions
-        $action1 = new TDataGridAction([$this, 'onEdit'], ['key' => '{id}']);
-        $action2 = new TDataGridAction([$this, 'onDelete'], ['key' => '{id}']);
+        $action1 = new TDataGridAction([$this, 'onEdit'], ['key' => '{cod_gen}']);
+        $action2 = new TDataGridAction([$this, 'onDelete'], ['key' => '{cod_gen}']);
         
         $this->datagrid->addAction($action1, 'Edit', 'far:edit blue');
         $this->datagrid->addAction($action2, 'Delete', 'far:trash-alt red');
