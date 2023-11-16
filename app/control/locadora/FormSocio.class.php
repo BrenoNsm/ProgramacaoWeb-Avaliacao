@@ -39,7 +39,7 @@ class FormSocio extends TPage
         $this->setLimit(-1); // Desative o limite para a datagrid
         
         // create the form
-        $this->form = new BootstrapFormBuilder('FormPSocio');
+        $this->form = new BootstrapFormBuilder('FormSocio');
         $this->form->setFormTitle(('Socio'));
         
         // create the form fields
