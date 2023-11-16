@@ -10,7 +10,7 @@ class Genero extends TRecord{
     const IDPOLICY = "max";
 
     public function __construct($cod_gen = NULL){
-        parent::__construct(self::TABLENAME, $cod_gen);
+        parent::__construct($cod_gen);
         parent::addAttribute('denominacao');
     }
 }
