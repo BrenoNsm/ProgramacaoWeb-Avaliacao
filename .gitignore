@@ -1,4 +1,4 @@
 /lib
 /vendor
-/database
-/app/database/locadora.db
+#/database
+#/app/database/locadora.db
