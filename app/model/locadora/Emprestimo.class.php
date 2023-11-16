@@ -3,7 +3,7 @@
 use Adianti\Database\TRecord;
 
 class Emprestimo  extends TRecord{
-    const TABLENAME = 'Emprestimo ';
+    const TABLENAME = 'Emprestimo';
     const PRIMARYKEY= 'id';
     const IDPOLICY =  'max'; // {max, serial}
     
