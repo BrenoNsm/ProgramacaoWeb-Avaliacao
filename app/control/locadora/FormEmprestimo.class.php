@@ -22,7 +22,7 @@ use Adianti\Wrapper\BootstrapFormBuilder;
  * @copyright  Copyright (c) 2006 Adianti Solutions Ltd. (http://www.adianti.com.br)
  * @license    http://www.adianti.com.br/framework-license
  */
-class FormGenero extends TPage
+class FormEmprestimo extends TPage
 {
     protected $form;      // form
     protected $datagrid;  // datagrid
@@ -41,45 +41,57 @@ class FormGenero extends TPage
         parent::__construct();
         
         $this->setDatabase('locadora'); // define the database
-        $this->setActiveRecord('Genero'); // define the Active Record
-        $this->setDefaultOrder('cod_gen', 'asc'); // define the default order
+        $this->setActiveRecord('Emprestimo'); // define the Active Record
+        $this->setDefaultOrder('id', 'asc'); // define the default order
         $this->setLimit(-1); // turn off limit for datagrid
         
         // create the form
-        $this->form = new BootstrapFormBuilder('FormGenero');
-        $this->form->setFormTitle(('Genero'));
+        $this->form = new BootstrapFormBuilder('FormEmprestimo');
+        $this->form->setFormTitle(('Emprestimo'));
         
         // create the form fields
-        $cod_gen          = new TEntry('cod_gen');
-        $denominacao    = new TEntry('denominacao');
+        $id            = new TEntry('id');
+        $id_dvd     = new TEntry('id_dvd');
+        $dataDevolucao = new TEntry('dataDevolucao');
+        $valor_pago    = new TEntry('valor_pago');
+        $id_socio           = new TEntry('id_socio');
         
         // add the form fields
-        $this->form->addFields([new TLabel('Cod Gen')], [$cod_gen]);
-        $this->form->addFields([new TLabel('denominacao')], [$denominacao]);
+        $this->form->addFields([new TLabel('ID')], [$id]);
+        $this->form->addFields([new TLabel('ID DVD')], [$id_dvd]);
+        $this->form->addFields([new TLabel('Data Devolucao', 'red')], [$dataDevolucao]);
+        $this->form->addFields([new TLabel('Valor Pago', 'red')], [$valor_pago]);
+        $this->form->addFields([new TLabel('ID Socio', 'red')], [$id_socio]);
         
         // define the form actions
         $this->form->addAction('Save', new TAction([$this, 'onSave']), 'fa:save green');
         $this->form->addActionLink('Clear', new TAction([$this, 'onClear']), 'fa:eraser red');
         
         // make id not editable
-        $cod_gen->setEditable(FALSE);
+        $id->setEditable(FALSE);
         
         // create the datagrid
         $this->datagrid = new BootstrapDatagridWrapper(new TDataGrid);
         $this->datagrid->width = '100%';
         
         // add the columns
-        $col_cod_gen           = new TDataGridColumn('cod_gen', 'Cod Gen', 'right', '10%');
-        $col_denominacao    = new TDataGridColumn('denominacao', 'Denominacao', 'right', '10%');
+        $col_id            = new TDataGridColumn('id', 'ID', 'right', '10%');
+        $col_nome_prof     = new TDataGridColumn('id_dvd', 'ID DVD', 'right', '10%');
+        $col_sobrenome_prof = new TDataGridColumn('dataDevolucao', 'Data Devolucao', 'left', '10%');
+        $col_pais_origem    = new TDataGridColumn('valor_pago', 'Valor Pago', 'left', '10%');
+        $col_tipo           = new TDataGridColumn('id_socio', 'ID Socio', 'left', '30%');
         
-        $this->datagrid->addColumn($col_cod_gen);
-        $this->datagrid->addColumn($col_denominacao);
+        $this->datagrid->addColumn($col_id);
+        $this->datagrid->addColumn($col_nome_prof);
+        $this->datagrid->addColumn($col_sobrenome_prof);
+        $this->datagrid->addColumn($col_pais_origem);
+        $this->datagrid->addColumn($col_tipo);
         
-        $col_cod_gen->setAction(new TDataGridAction([$this, 'onReload']), ['order' => 'cod_gen']);
+        $col_id->setAction(new TDataGridAction([$this, 'onReload']), ['order' => 'id']);
         
         // define row actions
-        $action1 = new TDataGridAction([$this, 'onEdit'], ['key' => '{cod_gen}']);
-        $action2 = new TDataGridAction([$this, 'onDelete'], ['key' => '{cod_gen}']);
+        $action1 = new TDataGridAction([$this, 'onEdit'], ['key' => '{id}']);
+        $action2 = new TDataGridAction([$this, 'onDelete'], ['key' => '{id}']);
         
         $this->datagrid->addAction($action1, 'Edit', 'far:edit blue');
         $this->datagrid->addAction($action2, 'Delete', 'far:trash-alt red');
