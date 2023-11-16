@@ -146,16 +146,28 @@
     <action>LoginForm#method=onLogout#static=1</action>
     <icon>fas:sign-out-alt fa-fw</icon>
   </menuitem>
-  <menuitem label="Locadora">
+  <menuitem label="Locadora De Vídeo">
     <icon>fas:archway fa-fw</icon>
     <menu>
-      <menuitem label="Clientes">
-        <action>FormDataGridViewClientes</action>
+      <menuitem label="Emprestimo">
+        <action>FormEmprestimo</action>
         <icon>fas:address-book fa-fw</icon>
       </menuitem>
-      <menuitem label="Veículos">
-        <action>FormDataGridViewVeiculos</action>
-        <icon>fas:ambulance fa-fw fa-fw</icon>
+      <menuitem label="Dvd">
+        <action>FormDvd</action>
+        <icon>fas:adjust fa-fw fa-fw</icon>
+      </menuitem>
+      <menuitem label="Gênero">
+        <action>FormGenero</action>
+        <icon>fas:transgender-alt fa-fw</icon>
+      </menuitem>
+      <menuitem label="Profissional Cinema">
+        <action>FormProfissionaICinema</action>
+        <icon>fab fa:product-hunt fa-fw</icon>
+      </menuitem>
+      <menuitem label="Filme ">
+        <action>FormFiIme</action>
+        <icon>fas:film fa-fw</icon>
       </menuitem>
     </menu>
   </menuitem>
