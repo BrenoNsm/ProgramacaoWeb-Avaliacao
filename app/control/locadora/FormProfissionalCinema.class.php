@@ -1,5 +1,6 @@
 <?php
 
+use App\Control\Locadora\ProfissionalCinema;
 use Adianti\Control\TAction;
 use Adianti\Control\TPage;
 use Adianti\Widget\Container\TPanelGroup;

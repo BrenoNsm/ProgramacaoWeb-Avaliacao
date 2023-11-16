@@ -3,7 +3,11 @@
 use Adianti\Database\TRecord;
 
 class profissional_cinema extends TRecord{
+<<<<<<< HEAD
     const TABLENAME = 'Profissional_Cinema';
+=======
+    const TABLENAME = 'profissional_cinema';
+>>>>>>> main
     const PRIMARYKEY= 'id';
     const IDPOLICY =  'max'; // {max, serial}
     

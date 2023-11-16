@@ -1,4 +1,13 @@
 /lib
 /vendor
+<<<<<<< HEAD
 #/database
 #/app/database/locadora.db
+=======
+<<<<<<< HEAD
+/database
+/database
+/app/database/locadora.db
+=======
+>>>>>>> main
+>>>>>>> 09cb0e9e7b4d727d2e6721d7e7c3b94a3096145c
