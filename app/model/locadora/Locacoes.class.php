@@ -1,4 +1,5 @@
 <?php
+use Adianti\Database\TRecord;
 
 class Locacoes extends TRecord
 {
