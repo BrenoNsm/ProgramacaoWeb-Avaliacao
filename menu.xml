@@ -149,8 +149,13 @@
   <menuitem label="Locadora De Vídeo">
     <icon>fas:archway fa-fw</icon>
     <menu>
+<<<<<<< HEAD
       <menuitem label="Emprestimo">
         <action>FormEmprestimo</action>
+=======
+      <menuitem label="Socio">
+        <action>FormSocio</action>
+>>>>>>> 659ab9d6eaa211635d3f082adaea321e19dcfdc2
         <icon>fas:address-book fa-fw</icon>
       </menuitem>
       <menuitem label="Dvd">

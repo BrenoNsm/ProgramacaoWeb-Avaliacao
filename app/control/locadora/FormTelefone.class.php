@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 
 use Adianti\Control\TAction;
 use Adianti\Control\TPage;
@@ -16,7 +15,7 @@ use Adianti\Wrapper\BootstrapFormBuilder;
 /**
  * FormProfissionalCinema
  */
-class FormDvd extends TPage
+class FormTelefone extends TPage
 {
     protected $form;      // form
     protected $datagrid;  // datagrid
@@ -28,65 +27,56 @@ class FormDvd extends TPage
     
     /**
      * Class constructor
-     * Creates the page, the form and the listing
+     * Creates the page, the form, and the listing
      */
     public function __construct()
     {
         parent::__construct();
         
-        $this->setDatabase('locadora'); // Substitua 'seu_banco_de_dados' pelo nome do seu banco de dados
-        $this->setActiveRecord('Dvd'); // Substitua 'Dvd' pelo nome da sua classe Active Record para DVDs
-        $this->setDefaultOrder('id_dvd', 'asc'); // Defina a ordem padrão
-        $this->setLimit(-1); // Desative o limite para a datagrid
+        $this->setDatabase('locadora'); 
+        $this->setActiveRecord('Telefone'); 
+        $this->setDefaultOrder('id_telefone', 'asc'); 
+        $this->setLimit(-1); 
         
         // create the form
-        $this->form = new BootstrapFormBuilder('FormDvd');
-        $this->form->setFormTitle(('Dvd'));
+        $this->form = new BootstrapFormBuilder('FormTelefone');
+        $this->form->setFormTitle(('Telefone'));
         
         // create the form fields
-        $id_dvd  = new TEntry('id_dvd');
-        $titulo  = new TEntry('titulo');
-        $estado  = new TEntry('estado');
+        $id_telefone = new TEntry('id_telefone');
+        $id_socio    = new TEntry('id_socio');
+        $num_telefone = new TEntry('num_telefone');
         
         // add the form fields
-        $this->form->addFields([new TLabel('ID DVD')], [$id_dvd]);
-        $this->form->addFields([new TLabel('Título')], [$titulo]);
-        $this->form->addFields([new TLabel('Estado')], [$estado]);
+        $this->form->addFields([new TLabel('ID Telefone')], [$id_telefone]);
+        $this->form->addFields([new TLabel('ID Sócio')], [$id_socio]);
+        $this->form->addFields([new TLabel('Número Telefone')], [$num_telefone]);
         
         // define the form actions
         $this->form->addAction('Save', new TAction([$this, 'onSave']), 'fa:save green');
         $this->form->addActionLink('Clear', new TAction([$this, 'onClear']), 'fa:eraser red');
         
         // make id not editable
-        $id_dvd->setEditable(FALSE);
+        $id_telefone->setEditable(FALSE);
         
         // create the datagrid
         $this->datagrid = new BootstrapDatagridWrapper(new TDataGrid);
         $this->datagrid->width = '100%';
         
         // add the columns
-        $col_id_dvd = new TDataGridColumn('id_dvd', 'ID DVD', 'right', '10%');
-        $col_titulo = new TDataGridColumn('titulo', 'Título', 'left', '20%');
-        $col_estado = new TDataGridColumn('estado', 'Estado', 'left', '20%');
+        $col_id_telefone = new TDataGridColumn('id_telefone', 'ID Telefone', 'right', '10%');
+        $col_id_socio    = new TDataGridColumn('id_socio', 'ID Sócio', 'right', '10%');
+        $col_num_telefone = new TDataGridColumn('num_telefone', 'Número Telefone', 'left', '20%');
         
-        $col_estado->setTransformer(function($value, $object, $row) {
-            if($value==true){
-                return 'Sim';
-            }else{
-                return 'Não';
-            }
-        });
+        $this->datagrid->addColumn($col_id_telefone);
+        $this->datagrid->addColumn($col_id_socio);
+        $this->datagrid->addColumn($col_num_telefone);
         
-        
-        $this->datagrid->addColumn($col_id_dvd);
-        $this->datagrid->addColumn($col_titulo);
-        $this->datagrid->addColumn($col_estado);
-        
-        $col_id_dvd->setAction(new TDataGridAction([$this, 'onReload']), ['order' => 'id_dvd']);
+        $col_id_telefone->setAction(new TDataGridAction([$this, 'onReload']), ['order' => 'id_telefone']);
         
         // define row actions
-        $action1 = new TDataGridAction([$this, 'onEdit'], ['key' => '{id_dvd}']);
-        $action2 = new TDataGridAction([$this, 'onDelete'], ['key' => '{id_dvd}']);
+        $action1 = new TDataGridAction([$this, 'onEdit'], ['key' => '{id_telefone}']);
+        $action2 = new TDataGridAction([$this, 'onDelete'], ['key' => '{id_telefone}']);
         
         $this->datagrid->addAction($action1, 'Edit', 'far:edit blue');
         $this->datagrid->addAction($action2, 'Delete', 'far:trash-alt red');
