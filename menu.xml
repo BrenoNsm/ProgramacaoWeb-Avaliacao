@@ -149,8 +149,8 @@
   <menuitem label="Locadora">
     <icon>fas:archway fa-fw</icon>
     <menu>
-      <menuitem label="Clientes">
-        <action>FormDataGridViewClientes</action>
+      <menuitem label="Socio">
+        <action>FormSocio</action>
         <icon>fas:address-book fa-fw</icon>
       </menuitem>
       <menuitem label="Veículos">

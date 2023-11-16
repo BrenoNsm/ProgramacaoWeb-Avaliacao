@@ -69,6 +69,15 @@ class FormDvd extends TPage
         $col_titulo = new TDataGridColumn('titulo', 'Título', 'left', '20%');
         $col_estado = new TDataGridColumn('estado', 'Estado', 'left', '20%');
         
+        $col_estado->setTransformer(function($value, $object, $row) {
+            if($value==true){
+                return 'Sim';
+            }else{
+                return 'Não';
+            }
+        });
+        
+        
         $this->datagrid->addColumn($col_id_dvd);
         $this->datagrid->addColumn($col_titulo);
         $this->datagrid->addColumn($col_estado);
